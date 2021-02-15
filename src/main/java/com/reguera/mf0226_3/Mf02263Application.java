@@ -44,14 +44,14 @@ public class Mf02263Application implements CommandLineRunner {
 		System.out.println("********************************************************");
 
 		Resenia r = new Resenia();
-		r.setResenia("Ha sido una experiencia maravillosa");
-		r.setFecha(new Date(2021 - 01 - 06));
+		r.setResenia("Txatxi piruli, me ha molado cantidad");
+		r.setFecha(new Date(2021 - 01 - 28));
 		r.setAlumno_codigo(7);
 		r.setCurso_codigo(7);
 
 		// rdao.insertar(r);
 
-		Curso curso = cdao.buscarPorIdConResenias(3);
+		Curso curso = cdao.buscarPorIdConResenias(7);
 
 		System.out.println(curso);
 

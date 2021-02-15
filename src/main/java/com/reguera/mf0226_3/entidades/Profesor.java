@@ -1,7 +1,5 @@
 package com.reguera.mf0226_3.entidades;
 
-import java.sql.Date;
-
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -9,12 +7,10 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Resenia {
+public class Profesor {
 
 	private int codigo;
-	private String resenia;
-	private Date fecha;
-	private int alumno_codigo;
-	private int curso_codigo;
+	private String nombre;
+	private String apellidos;
 
 }

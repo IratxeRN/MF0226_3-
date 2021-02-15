@@ -33,13 +33,14 @@ public class ReseniaDaoJdbc implements ReseniaDao {
 	public Resenia insertar(Resenia r) {
 
 		KeyHolder keyHolder = new GeneratedKeyHolder();
+
 		jdbc.update(connection -> {
 			PreparedStatement ps = connection.prepareStatement(
 					"INSERT INTO resenias (resenia, fecha, alumno_codigo, curso_codigo) VALUES (?,?,?,?)",
 					Statement.RETURN_GENERATED_KEYS);
 			ps.setString(1, r.getResenia());
 			ps.setDate(2, r.getFecha());
-			ps.setInt(3, r.getCurso_codigo());
+			ps.setInt(3, r.getAlumno_codigo());
 			ps.setInt(4, r.getCurso_codigo());
 			return ps;
 		}, keyHolder);
@@ -49,17 +50,9 @@ public class ReseniaDaoJdbc implements ReseniaDao {
 		return r;
 	}
 
-	/*
-	 * @Override public Resenia insertar(Resenia r) {
-	 * 
-	 * jdbc.
-	 * update("INSERT INTO resenias (resenia, fecha, alumno_codigo, curso_codigo) VALUES (?,?,?,?)"
-	 * , r.getResenia(), r.getFecha(), r.getAlumno_codigo(), r.getCurso_codigo());
-	 * return r; }
-	 */
-
 	@Override
 	public Resenia modificar(Resenia r) {
+
 		jdbc.update("UPDATE resenias SET resenia = ?, fecha = ?, alumno_codigo = ?, curso_codigo = ? WHERE codigo = ?",
 				new Object[] { r.getResenia(), r.getFecha(), r.getAlumno_codigo(), r.getCurso_codigo(),
 						r.getCodigo() });
@@ -68,6 +61,7 @@ public class ReseniaDaoJdbc implements ReseniaDao {
 
 	@Override
 	public void borrar(int id) {
+
 		jdbc.update("DELETE FROM resenias WHERE codigo = ?", id);
 
 	}
